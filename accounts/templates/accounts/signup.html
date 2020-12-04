@@ -1,31 +1,28 @@
-{% extends 'base.html' %}
+<!DOCTYPE HTML>
 
-{% block content %}
+<html lang="en">
+<head>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'style1.css' %}">
 
-{% if error %}
-{{ error }}
-<br />
-<br />
-{% endif %}
+</head>
+<body>
+<img src="{% static 'beyondwellness_logo.png' %}"alt="Logo">
+  <div class = "login-div">
+    <form method="POST" action="{% url 'signup' %}">
+        {% csrf_token %}
+      <div class = "username">
+      <input id="name" type="text" name="username" placeholder="User name">
+  </div>
 
-<h1>Sign-up</h1>
-
-<form method="POST" action="{% url 'signup' %}">
-{% csrf_token %}
-Username:
-<br />
-<input type="text" name="username" />
-<br />
-Password:
-<br />
-<input type="password" name="password1" />
-<br />
-Confirm Password:
-<br />
-<input type="password" name="password2" />
-<br />
-<br />
-<input class="btn btn-primary" type="submit" value="Sign Up!" />
-</form>
-
-{% endblock %}
+<div class = "password">
+  <input id="password" type="password" name="password1" placeholder="Password">
+</div>
+        <div class = "repassword">
+  <input id="repassword" type="password" name="password2" placeholder="Confirm Password">
+</div>
+<button value="Sign Up!" type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
